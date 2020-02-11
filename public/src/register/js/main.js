@@ -29,7 +29,9 @@
     });
 
     $('#check_verification_code').hide();
+    $('#verificationmessage').hide();
 
+    // send verification code
     $('#send-verification-code').on('click', function(){
         $.ajaxSetup({
             headers: {
@@ -43,13 +45,11 @@
                 phonenumber: $('#phonenumber').val(),
             },
             success: function(data,status){
-                if (status == 'success'){
-                    $('#send_verification_code').hide();
-                    $('#check_verification_code').show();
-                    $.toast({
-                        text : data.message,
-                    });
-                }
+                $('#send_verification_code').hide();
+                $('#check_verification_code').show();
+                $.toast({
+                    text : data.message,
+                });
             },
             error: function(data){
                 var msg = JSON.parse(data.responseText).phonenumber[0];
@@ -61,7 +61,7 @@
     });
 
     // check verification code
-    $('#check_verification_code').on('click', function(){
+    $('#check-verification-code').on('click', function(){
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -74,10 +74,18 @@
                 verificationcode: $('#verificationcode').val(),
             },
             success: function(data, status){
-                console.log(data);
+                $.toast({
+                    text : data.message,
+                });
+                $('#verificationmessage').show()
+                    .text(data.message + " you can go to next step");
             },
             error: function(data){
-                console.log(data);
+                var msg = JSON.parse(data.responseText).message;
+                console.log(msg);
+                $.toast({
+                    text : msg,
+                });
             }
         })
     });

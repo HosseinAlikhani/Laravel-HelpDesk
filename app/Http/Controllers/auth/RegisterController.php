@@ -39,6 +39,16 @@ class RegisterController extends Controller
     }
     public function registerCheckVerification(Request $request)
     {
-        dd($request->all());
+        if($request->verificationcode == '12345'){
+            $msg = [
+                'message'   =>  'your phone number successfully active',
+            ];
+            return response($msg, 200);
+        }else{
+            $msg = [
+                'message'   =>  'your verification code is incorrect',
+            ];
+            return response($msg, 423);
+        }
     }
 }

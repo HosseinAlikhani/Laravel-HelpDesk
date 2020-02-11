@@ -45,8 +45,10 @@
                             <div class="form-group" id="check_verification_code">
                                 <input type="text" id="verificationcode">
                                 <label for="verificationcode"> Verification Code</label>
-                                <button type="submit" class="mt-4 btn btn-success" id="check_verification_code">Check Verification Code</button>
+                                <button type="submit" class="mt-4 btn btn-success" id="check-verification-code">Check Verification Code</button>
                             </div>
+                        </div>
+                        <div class="alert alert-success" id="verificationmessage">
                         </div>
                     </fieldset>
                     <h3></h3>
