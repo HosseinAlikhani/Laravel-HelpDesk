@@ -37,4 +37,8 @@ class RegisterController extends Controller
             ],423);
         }
     }
+    public function registerCheckVerification(Request $request)
+    {
+        dd($request->all());
+    }
 }

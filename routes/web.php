@@ -14,6 +14,7 @@
 Route::namespace('auth')->group(function(){
     Route::get('register', 'RegisterController@registerView')->name('register-view');
     Route::post('register-verification', 'RegisterController@registerVerification')->name('register-verification');
+    Route::post('register-check-verification', 'RegisterController@registerCheckVerification')->name('register-check-verification');
 });
 
 Route::namespace('ticket')->prefix('ticket')->group(function(){

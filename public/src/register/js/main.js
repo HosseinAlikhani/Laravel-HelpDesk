@@ -60,4 +60,26 @@
         })
     });
 
+    // check verification code
+    $('#check_verification_code').on('click', function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: url + '/register-check-verification',
+            type: 'POST',
+            data: {
+                verificationcode: $('#verificationcode').val(),
+            },
+            success: function(data, status){
+                console.log(data);
+            },
+            error: function(data){
+                console.log(data);
+            }
+        })
+    });
+
 })(jQuery);
