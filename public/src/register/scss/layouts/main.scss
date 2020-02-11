@@ -1,0 +1,146 @@
+.signup-content {
+    @extend display-flex;
+}
+
+p {
+    margin: 0px;
+}
+p.desc {
+    padding-bottom: 330px;
+    color: $grey-light;
+    line-height: 1.92;
+}
+p.title {
+    font-weight: bold;
+    padding-bottom: 7px;
+}
+.signup-img {
+    padding-bottom: 43px;
+}
+fieldset {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.signup-desc {
+    background: #fff;
+    width: 495px;
+}
+.signup-desc-content {
+    padding: 45px 55px;
+}
+
+.signup-form-conent {
+    width: 905px;
+}
+
+.signup-form {
+    padding: 55px 110px;
+}
+
+input {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #bfbfbf;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 24px;
+    @include transition(.3s ease);
+    padding-top: 30px;
+    padding-bottom: 5px;
+    -webkit-appearance: none;
+    background: transparent;
+    + label {
+        position: absolute;
+        @include transition(.25s ease);
+        left: 0;
+        top: 25px;
+        font-size: 24px;
+        font-weight: bold;
+        color: $grey-color;
+    }
+    &:focus + label {
+        top: -7px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    &:valid + label {
+        top: -7px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+.form-group {
+    position: relative;
+}
+.field-icon {
+    font-size: 24px;
+    position: relative;
+    z-index: 2;
+    float: right;
+    margin-top: -37px;
+}
+
+label {
+
+}
+
+.content {
+    padding: 340px 0 315px 0;
+    position: relative;
+    
+    h3 {
+        display: none;
+    }
+}
+.step-current {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    font-weight: 800;
+    color: $violet-color;
+}
+
+.actions {
+    ul {
+        @extend list-type-ulli;
+        width: 100%;
+        @extend display-flex;
+        @include justify-content(flex-end);
+        .disabled {
+            display: none;
+        }
+        li {
+            margin-left: 20px;
+            &:first-child {
+                a {
+                    background: #fff;
+                    color: $grey-light;
+                }
+            }
+            a {
+                width: 140px;
+                height: 50px;
+                color: #fff;
+                font-family: 'Montserrat';
+                font-size: 13px;
+                font-weight: bold;
+                background: $violet-color;
+                @extend display-flex;
+                @include align-items(center);
+                @include justify-content(center);
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.steps {
+    display: none;
+}
