@@ -12,6 +12,7 @@ class Ticket extends Model
         'created_at', 'updated_at',
     ];
     public $timestamps = false;
+
     public function priority()
     {
         return $this->hasOne(Priority::class,
@@ -29,5 +30,17 @@ class Ticket extends Model
         return $this->hasOne(State::class,
             'id',
             'state_id');
+    }
+    public function answer()
+    {
+        return $this->hasMany(TicketAnswer::class,
+            'ticket_id',
+            'id');
+    }
+    public function user()
+    {
+        return $this->hasone(User::class,
+            'id',
+            'user_id');
     }
 }

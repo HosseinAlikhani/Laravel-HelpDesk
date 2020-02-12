@@ -12,4 +12,11 @@ class TicketAnswer extends Model
         'created_at', 'updated_at',
     ];
     public $timestamps = false;
+
+    public function user()
+    {
+        return $this->hasOne(User::class,
+            'id',
+            'user_id');
+    }
 }

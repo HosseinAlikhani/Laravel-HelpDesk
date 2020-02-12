@@ -23,5 +23,8 @@ Route::namespace('ticket')->prefix('ticket')->group(function(){
 
    Route::get('submit', 'TicketController@submitTicket')->name('submit');
    Route::get('list', 'TicketController@listTicket')->name('list');
+   Route::get('read/{id}', 'TicketController@readTicket')->name('read');
+
    Route::post('submit-request', 'TicketController@submitRequest')->name('submit-request');
+   Route::post('submit-ticket-answer','TicketController@submitTicketAnswer')->name('submit-ticket-answer');
 });
