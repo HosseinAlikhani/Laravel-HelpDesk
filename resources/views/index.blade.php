@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{ asset('plugin/toastr/dist/jquery.toast.min.css') }}" rel="stylesheet" type="text/css">
 </head>
 @yield('css')
@@ -17,27 +18,18 @@
 <div class="container" style="margin-top:30px">
     <div class="row">
         <div class="col-sm-4">
-            <h2>About Me</h2>
-            <h5>Photo of me:</h5>
-            <div class="fakeimg">Fake Image</div>
-            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            <h3>Some Links</h3>
-            <p>Lorem ipsum dolor sit ame.</p>
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            <hr class="d-sm-none">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">Help Desk Support</h4>
+                <div class="align-self-center m-3">
+                    <p class="text-primary">Submit Your First Ticket</p>
+                    <button onclick="location.href='{{ route('submit') }}'" class="btn btn-info"><i class="fa fa-envelope"></i>  Submit Ticket</button>
+                    <hr>
+                    <p class="text-primary">View Tickets</p>
+                    <button onclick="location.href='{{ route('list') }}'" class="btn btn-success"><i class="fa fa-edit"></i> Ticket List</button>
+                </div>
+                </div>
+            </div>
         </div>
         <div class="col-sm-8">
             @yield('content')

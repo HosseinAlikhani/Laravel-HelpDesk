@@ -1,7 +1,7 @@
 @extends('index')
 @section('title', $title)
 @section('content')
-
+<div class="counter"></div>
     <div class="container">
         <h2>Stacked form</h2>
         <form id="ticket" enctype="multipart/form-data">
@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <label for="priority">department:</label>
                             <select class="form-control" name="department" id="department">
-                                <option selected>Select</option>
+                                <option value="" selected>Select</option>
                             </select>
                     </div>
                 </div>
@@ -24,14 +24,14 @@
                     <div class="form-group">
                         <label for="priority">priority:</label>
                         <select class="form-control" name="priority" id="priority">
-                            <option selected>Select</option>
+                            <option value="" selected>Select</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="description">description:</label>
-                <textarea type="text" class="form-control" id="description" name="message">Enter Your Request </textarea>
+                <textarea type="text" class="form-control" id="description" name="message" placeholder="Enter Your Request"></textarea>
             </div>
             <div class="form-group">
                 <label for="attachment">Attachment:</label>
@@ -45,6 +45,7 @@
 
 @section('script')
     <script>
+
         $('form').submit(function(event){
             event.preventDefault();
             var file = $(this)[0];
@@ -56,7 +57,25 @@
                 processData: false,
                 contentType: false,
                 success: function(data){
-                    window.location.replace(data.url);
+                    $.toast({
+                        text: data.message
+                    });
+                    var counttime = 5;
+                    window.setInterval(function(){
+                        console.log('[start setInterval]');
+                        if (counttime !== 0){
+                            $('.counter').text(counttime);
+                            counttime = counttime - 1;
+                        }
+                        if (counttime === 0){
+                            window.location.replace(data.url);
+                        }
+                    },1000);
+                },
+                error: function(data){
+                    $.toast({
+                        text : data.responseText,
+                    });
                 }
             });
         });

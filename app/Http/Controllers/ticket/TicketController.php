@@ -53,6 +53,17 @@ class TicketController extends Controller
         return $check ? $check : false;
     }
 
+    public function submitValidator($data)
+    {
+        $value = [
+            'title' =>  'required',
+            'department'    =>   'required',
+            'priority'   =>  'required',
+            'message'   =>  'required',
+            'attachment'   =>  'required',
+        ];
+        return Validator::make($data,$value);
+    }
     public function answerValidator($data)
     {
         $value = [
@@ -92,6 +103,10 @@ class TicketController extends Controller
 
     public function submitRequest(Request $request)
     {
+        $validator = $this->submitValidator($request->all());
+        if ($validator->fails()){
+            return response($validator->errors()->first(), 423);
+        }
         $check = $this->create($request->all());
         $messageOk = [
             'message'   =>  'تیکت شما با موفقعیت به ثبت رسید',

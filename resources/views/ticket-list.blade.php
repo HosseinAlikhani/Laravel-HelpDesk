@@ -13,6 +13,7 @@
             <th>State</th>
             <th>Title</th>
             <th>LastUpdate</th>
+            <th>View Ticket</th>
         </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
                     <td>{{ $lists->state }}</td>
                     <td>{{ $lists->title }}</td>
                     <td>{{ $lists->updated_at_time }}</td>
+                    <td><button onclick="location.href='{{ route('read', $lists->id) }}'" class="btn btn-info">View</button></td>
                 </tr>
             @endforeach
         </tbody>

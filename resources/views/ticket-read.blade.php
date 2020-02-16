@@ -62,7 +62,8 @@
     @if(!empty($ticket->base))
         <div class="container-message main-ticket">
             <img src="{{ asset('profile/user/'. $ticket->base->user->img) }}" alt="Avatar" class="right">
-            <p>{{ $ticket->base->message }}</p>
+            <p> Title : {{ $ticket->base->title }}</p>
+            <p> Message : {{ $ticket->base->message }}</p>
             <span class="time-left">{{ $ticket->base->created_at_time }}</span>
         </div>
     @endif
@@ -90,7 +91,7 @@
         </div>
         <div class="form-group">
             <label for="answer">Your Answer:</label>
-            <textarea type="text" name="message" class="form-control" rows="5" id="ticket-answer"></textarea>
+            <textarea type="text" name="message" class="form-control" rows="5" id="ticket-answer-message"></textarea>
         </div>
         <div class="form-group">
             <label for="attachment">Attachment:</label>
@@ -105,7 +106,9 @@
         event.preventDefault();
         var file = $(this)[0];
         var data = new FormData(file);
-        const hossein = "حسین";
+        const message = $('#ticket-answer-message').val();
+        const avatar = "{{ asset('profile/user/' . $answers->user->img ) }}";
+        console.log(avatar);
         data.append('_token', "{{csrf_token()}}");
         $.ajax({
             url: "{{ route('submit-ticket-answer') }}",
@@ -120,8 +123,8 @@
                 $('#ticket').append(
                     "        <div id=\"ticket\">\n" +
                     "            <div class=\"container-message\">\n" +
-                    "                <img src=\"{\" alt=\"Avatar\">\n" +
-                    "                <p> hossein </p>\n" +
+                    "                <img src=" + avatar + " alt=\"Avatar\">\n" +
+                    "                <p>" + message + "</p>\n" +
                     "                <span class=\"time-right\">now</span><br>\n" +
                     "                <span class=\"time-right\"></span>\n" +
                     "            </div>\n" +

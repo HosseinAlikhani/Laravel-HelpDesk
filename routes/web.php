@@ -11,6 +11,14 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
+Route::get('home', function(){
+   $route = Route::current();
+   dd($route);
+});
+Route::get('/', 'BaseController@index')->name('home');
+
 Route::namespace('auth')->group(function(){
     Route::get('register', 'RegisterController@registerView')->name('register-view');
     Route::post('register-verification', 'RegisterController@registerVerification')->name('register-verification');
